@@ -69,9 +69,9 @@ const ChapterDetail = () => {
       const headers = { 'Authorization': `Bearer ${token}` };
 
       const [topicRes, problemsRes, progressRes] = await Promise.all([
-        fetch(`/api/topics/${id}`),
-        fetch(`/api/problems/topic/${id}`),
-        fetch('/api/progress', { headers })
+        fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics/${id}`),
+        fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems/topic/${id}`),
+        fetch(`${import.meta.env.VITE_API_URL || ''}/api/progress`, { headers })
       ]);
 
       if (!topicRes.ok) {
@@ -105,7 +105,7 @@ const ChapterDetail = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/progress/toggle', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/progress/toggle`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

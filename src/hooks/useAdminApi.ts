@@ -71,7 +71,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { data: null, error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch('/api/topics', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics`, {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify(input),
@@ -91,7 +91,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { data: null, error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch(`/api/topics/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics/${id}`, {
                 method: 'PATCH',
                 headers: getHeaders(),
                 body: JSON.stringify(input),
@@ -111,7 +111,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch(`/api/topics/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics/${id}`, {
                 method: 'DELETE',
                 headers: getHeaders(),
             });
@@ -130,7 +130,7 @@ export const useAdminApi = () => {
 
     const getAllChapters = async () => {
         try {
-            const response = await fetch('/api/topics');
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics`);
             const data = await response.json();
             return { data, error: null };
         } catch (err: any) {
@@ -140,7 +140,7 @@ export const useAdminApi = () => {
 
     const getChapter = async (id: string) => {
         try {
-            const response = await fetch(`/api/topics/${id}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics/${id}`);
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Failed to fetch topic');
             return { data, error: null };
@@ -154,7 +154,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { data: null, error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch('/api/problems', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems`, {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify(input),
@@ -174,7 +174,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { data: null, error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch(`/api/problems/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems/${id}`, {
                 method: 'PATCH',
                 headers: getHeaders(),
                 body: JSON.stringify(input),
@@ -194,7 +194,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch(`/api/problems/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems/${id}`, {
                 method: 'DELETE',
                 headers: getHeaders(),
             });
@@ -213,7 +213,7 @@ export const useAdminApi = () => {
 
     const getAllProblems = async () => {
         try {
-            const response = await fetch('/api/problems');
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems`);
             const data = await response.json();
             return { data, error: null };
         } catch (err: any) {
@@ -223,7 +223,7 @@ export const useAdminApi = () => {
 
     const getProblem = async (id: string) => {
         try {
-            const response = await fetch(`/api/problems/${id}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems/${id}`);
             const data = await response.json();
             if (!response.ok) throw new Error(data.error || 'Failed to fetch problem');
             return { data, error: null };
@@ -234,7 +234,7 @@ export const useAdminApi = () => {
 
     const getProblemsByChapter = async (topicId: string) => {
         try {
-            const response = await fetch(`/api/problems/topic/${topicId}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems/topic/${topicId}`);
             const data = await response.json();
             return { data, error: null };
         } catch (err: any) {
@@ -246,7 +246,7 @@ export const useAdminApi = () => {
         if (!checkAdmin()) return { data: null, error: new Error('Unauthorized') };
 
         try {
-            const response = await fetch('/api/progress/admin/summary', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/progress/admin/summary`, {
                 headers: getHeaders(),
             });
             const data = await response.json();

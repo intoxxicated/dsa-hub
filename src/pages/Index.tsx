@@ -53,9 +53,9 @@ const Index = () => {
       const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
 
       const [topicsRes, problemsRes, progressRes] = await Promise.all([
-        fetch('/api/topics'),
-        fetch('/api/problems'),
-        fetch('/api/progress', { headers })
+        fetch(`${import.meta.env.VITE_API_URL || ''}/api/topics`),
+        fetch(`${import.meta.env.VITE_API_URL || ''}/api/problems`),
+        fetch(`${import.meta.env.VITE_API_URL || ''}/api/progress`, { headers })
       ]);
 
       if (!topicsRes.ok || !problemsRes.ok) throw new Error('Failed to fetch data');
